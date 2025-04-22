@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 
-const Header = () => {
+const Header = ({ scroll }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}></div>
@@ -13,7 +13,9 @@ const Header = () => {
           <li className={styles.header__item}>Отзывы</li>
         </ul>
       </nav>
-      <button className={styles.header__btn}>Запись на собеседование</button>
+      <button className={styles.header__btn} onClick={scroll}>
+        Запись на собеседование
+      </button>
     </header>
   );
 };

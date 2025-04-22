@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <form action="" className={styles.footer__form}>
+      <form action="" className={styles.footer__form} id = "form">
         <h2 className={styles.footer__title}>Записаться на собеседование</h2>
         <input
           type="text"
