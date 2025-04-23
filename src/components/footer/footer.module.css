@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  /* width: 100vw; */
   height: 65.625vw;
   background: url("../../assets/images/footer.png");
   background-size: cover;

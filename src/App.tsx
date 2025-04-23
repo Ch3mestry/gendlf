@@ -1,6 +1,21 @@
+import { useState } from "react";
 import styles from "./App.module.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+
+interface ICompanyValueItem {
+  id: number;
+  img: string;
+  title: string;
+  text: string;
+}
+
+interface IRibbonItem {
+  id: number;
+  img: string;
+  description: string;
+  idNews: number;
+}
 
 function App() {
   const companyValueItems = [
@@ -35,6 +50,55 @@ function App() {
       text: "Постоянно расти личностно и профессионально для достижения поставленных целей.",
     },
   ];
+  const ribbonItems = [
+    {
+      id: 1,
+      img: "src/assets/images/ribbon1.png",
+      description:
+        "Экономим на бумаге и угадываем фильмы: дайджест видео марта 2022 года",
+      idNews: 1,
+    },
+    {
+      id: 2,
+      img: "src/assets/images/ribbon2.png",
+      description: "Изменения 2022 года",
+      idNews: 2,
+    },
+    {
+      id: 3,
+      img: "src/assets/images/ribbon3.png",
+      description: "Почему стоит работать программистом в 2022 году",
+      idNews: 3,
+    },
+    {
+      id: 4,
+      img: "src/assets/images/ribbon4.png",
+      description:
+        "Автоматизированный УСН и путевые листы: дайджест новостей за март 2022. Автоматизированный УСН и путевые листы",
+      idNews: 4,
+    },
+    {
+      id: 5,
+      img: "src/assets/images/ribbon2.png",
+      description: "Тест Слайд",
+      idNews: 5,
+    },
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerView = window.innerWidth <= 375 ? 1 : 4;
+
+  const nextSlide = () => {
+    if (currentIndex < ribbonItems.length - itemsPerView) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   const scrollToForm = () => {
     const formElement = document.getElementById("form");
     if (formElement) {
@@ -120,10 +184,10 @@ function App() {
           <div className={styles.company_value__slider}>
             {companyValueItems.map((item) => {
               return (
-                <div className={styles.company_value__item}>
+                <div className={styles.company_value__item} key={item.id}>
                   <img
                     src={item.img}
-                    className={styles.company_value__item_image}
+                    className={styles.company_value__item_img}
                   />
                   <h5 className={styles.company_value__item_title}>
                     {item.title}
@@ -156,8 +220,43 @@ function App() {
             {/* ::after circle video play */}
           </div>
         </section>
-        <section className={styles.live_slider__section}>
-          <h2 className={styles.live_slider__title}>Живая лента</h2>
+        <section className={styles.ribbon__section}>
+          <h2 className={styles.ribbon__title}>Живая лента</h2>
+          <div className={styles.ribbon__slider}>
+            <button
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className={styles.ribbon_btn}
+            >
+              <img src="src/assets/svg/left-row-slider.svg" alt="" />
+            </button>
+            <div className={styles.ribbon__inner}>
+              {ribbonItems
+                .slice(currentIndex, currentIndex + itemsPerView)
+                .map((item) => (
+                  <div className={styles.ribbon__item} key={item.id}>
+                    <img
+                      src={item.img}
+                      alt=""
+                      className={styles.ribbon__item_img}
+                    />
+                    <p className={styles.ribbon__item_description}>
+                      {item.description}
+                    </p>
+                    <button className={styles.ribbon__item_btn}>
+                      Перейти к статье
+                    </button>
+                  </div>
+                ))}
+            </div>
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex >= ribbonItems.length - itemsPerView}
+              className={styles.ribbon__btn}
+            >
+              <img src="src/assets/svg/right-row-slider.svg" alt="" />
+            </button>
+          </div>
         </section>
         <section className={styles.practice__section}>
           <h2 className={styles.practice__title}>
