@@ -4,11 +4,11 @@ import styles from "./footer.module.css";
 const Footer: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    position: '',
-    questions: '',
+    name: "",
+    phone: "",
+    email: "",
+    position: "",
+    questions: "",
   });
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -22,7 +22,9 @@ const Footer: React.FC = () => {
     fileInputRef.current?.click();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -33,7 +35,8 @@ const Footer: React.FC = () => {
     if (!formData.phone) newErrors.push("Телефон обязателен для заполнения.");
     if (!formData.email) newErrors.push("Email обязателен для заполнения.");
     if (!formData.position) newErrors.push("Выберите желаемую должность.");
-    if (!formData.questions) newErrors.push("Пожалуйста, задайте ваши вопросы.");
+    if (!formData.questions)
+      newErrors.push("Пожалуйста, задайте ваши вопросы.");
     return newErrors;
   };
 
@@ -45,7 +48,6 @@ const Footer: React.FC = () => {
     } else {
       setErrors([]);
       alert("Форма успешно отправлена!");
-      // Здесь можно добавить логику для отправки данных формы
     }
   };
 
@@ -90,15 +92,33 @@ const Footer: React.FC = () => {
             Выберите категорию занятости
           </span>
           <div className={styles.footer__radio_block}>
-            <input type="radio" name="employment" id="office" value="office" onChange={handleChange} />
+            <input
+              type="radio"
+              name="employment"
+              id="office"
+              value="office"
+              onChange={handleChange}
+            />
             <label htmlFor="office">Работа в офисе</label>
           </div>
           <div className={styles.footer__radio_block}>
-            <input type="radio" name="employment" id="intern" value="intern" onChange={handleChange} />
+            <input
+              type="radio"
+              name="employment"
+              id="intern"
+              value="intern"
+              onChange={handleChange}
+            />
             <label htmlFor="intern">Стажировка</label>
           </div>
           <div className={styles.footer__radio_block}>
-            <input type="radio" name="employment" id="distant" value="distant" onChange={handleChange} />
+            <input
+              type="radio"
+              name="employment"
+              id="distant"
+              value="distant"
+              onChange={handleChange}
+            />
             <label htmlFor="distant">Удаленная работа</label>
           </div>
         </div>
@@ -112,7 +132,9 @@ const Footer: React.FC = () => {
         {errors.length > 0 && (
           <div className={styles.footer__errors}>
             {errors.map((error, index) => (
-              <p key={index} className={styles.footer__error}>{error}</p>
+              <p key={index} className={styles.footer__error}>
+                {error}
+              </p>
             ))}
           </div>
         )}
@@ -130,10 +152,12 @@ const Footer: React.FC = () => {
               ref={fileInputRef}
               onChange={handleFileUpload}
               className={styles.footer__input_file}
-              style={{ display: 'none' }} // Скрываем input
+              style={{ display: "none" }}
             />
           </div>
-          <button type="submit" className={styles.footer__btn_submit}>Записаться</button>
+          <button type="submit" className={styles.footer__btn_submit}>
+            Записаться
+          </button>
         </div>
       </form>
     </footer>

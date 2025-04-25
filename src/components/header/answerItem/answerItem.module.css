@@ -1,0 +1,64 @@
+.answers__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw; /* 8px */
+}
+
+.answers__item_head {
+  display: flex;
+  cursor: pointer;
+  gap: 1.171875vw; /* 15px */
+  align-items: center;
+}
+
+.answers__item_title {
+  font-weight: 400;
+  font-size: 1.40625vw; /* 18px */
+  text-decoration: underline;
+  color: #00b7ec;
+}
+
+.answers__row {
+  transition: transform 0.3s ease;
+}
+
+.answers__row.open {
+  transform: rotate(90deg);
+}
+
+.answers__item_description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.78125vw; /* 10px */
+  padding-left: 2.890625vw; /* 37px */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.answers__item_description.open {
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.answers__item ul {
+  list-style-position: inside;
+  padding-left: 0.78125vw; /* 10px */
+}
+
+.answers__item li {
+  color: #666666;
+  font-size: 1.40625vw; /* 18px */
+  font-weight: 400;
+}
+
+.answers__item p {
+  font-weight: 400;
+  font-size: 1.40625vw; /* 18px */
+  color: #666666;
+}
+
+.answers__item strong {
+  font-weight: 700;
+}

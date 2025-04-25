@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import AnswerItem from "./components/header/answerItem/AnswerItem";
 
 interface ICompanyValueItem {
   id: number;
@@ -17,8 +18,14 @@ interface IRibbonItem {
   idNews: number;
 }
 
+interface IAnswerItem {
+  id: number;
+  title: string;
+  description: string;
+}
+
 function App() {
-  const companyValueItems = [
+  const companyValueItems: ICompanyValueItem[] = [
     {
       id: 1,
       img: "src/assets/images/value1.png",
@@ -50,7 +57,7 @@ function App() {
       text: "Постоянно расти личностно и профессионально для достижения поставленных целей.",
     },
   ];
-  const ribbonItems = [
+  const ribbonItems: IRibbonItem[] = [
     {
       id: 1,
       img: "src/assets/images/ribbon1.png",
@@ -84,6 +91,52 @@ function App() {
       idNews: 5,
     },
   ];
+  const answers: IAnswerItem[] = [
+    {
+      id: 1,
+      title: "На что нужно обратить внимание на собеседовании?",
+      description: `
+        Кроме умения представлять себя, грамотно разговаривать и
+        опрятного внешнего вида, стоит обратить внимание еще на пару
+        моментов. Они не очевидны, но очень эффективны.
+        <ul>
+          <li><strong>Сохраняйте спокойствие.</strong> Конечно, собеседование – это
+          стрессовая ситуация, которая мешает конструктивно мыслить.
+          Если волнение берет верх – выпейте немного воды, прижмите
+          стопы к полу, а главное, помните: ничего ужасного
+          произойти не может.</li>
+          <li><strong>Внимание к самопрезентации. </strong>Если собеседование – пьеса, вы
+          – ее главный герой. Подготовьте рассказ о себе заранее,
+          опираясь на важные навыки, и опишите, почему это важно для
+          данной работы. Все это придаст вам уверенности в себе.</li>
+          <li><strong>Каверзные вопросы – это норма.</strong> Если вам задали какой-либо
+          вопрос, который кажется вам сложным или задевает личные
+          качества, знайте – правильных ответов не существует.
+          Каверзные вопросы призваны показать вашу
+          стрессоустойчивость и умение ориентироваться в ситуации.
+          Здесь поможет адекватная самокритика и знания в своей
+          профессии.</li>
+        </ul>
+      `,
+    },
+    {
+      id: 2,
+      title: "Как правильно составить резюме?",
+      description:
+        "testAnswerId2 верзные вопросы – это норма. Если вам задали какой-либо вопрос, который кажется вам сложным или задевает личныекачества, знайте – правильных ответов не существует.Каверзные вопросы",
+    },
+    {
+      id: 3,
+      title: "Возможно ли устроиться без опыта?",
+      description: "testAnswerId3",
+    },
+    {
+      id: 4,
+      title: "Ошибки на собеседовании. Чего нужно избегать?",
+      description: "testAnswerId4",
+    },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerView = window.innerWidth <= 375 ? 1 : 4;
 
@@ -110,20 +163,15 @@ function App() {
       <Header scroll={scrollToForm} />
       <main className={styles.main}>
         <section className={styles.head__section}>
-          <h1 className={styles.head__section_title}>
-            Добро пожаловать в ГЭНДАЛЬФ!
-          </h1>
-          <p className={styles.head__section_text}>
+          <h1 className={styles.head__title}>Добро пожаловать в ГЭНДАЛЬФ!</h1>
+          <p className={styles.head__text}>
             Мы готовы поделиться секретом, почему любим компанию, в которой
             работаем. Если тебе будут близки наши ценности и идеи, то смело
             записывайся на собеседование!
           </p>
-          <div className={styles.head__section_btns}>
-            <button className={styles.head__section_btn_why}>Почему мы</button>
-            <button
-              className={styles.head__section_btn_reg}
-              onClick={scrollToForm}
-            >
+          <div className={styles.head__btns}>
+            <button className={styles.head__btn_why}>Почему мы</button>
+            <button className={styles.head__btn_reg} onClick={scrollToForm}>
               Записаться на собеседование
             </button>
           </div>
@@ -131,7 +179,7 @@ function App() {
         <section className={styles.about__section}>
           <div className={styles.about__text_content}>
             <h2 className={styles.about__title}>О том, чем мы занимаемся</h2>
-            <div className={styles.about__section_text_block}>
+            <div className={styles.about__text_block}>
               <p className={styles.about__text}>
                 ГЭНДАЛЬФ – один из крупнейших игроков на рынке информационных
                 технологий, занимающий 4 место среди 7000 партнеров фирмы «1С».
@@ -216,8 +264,11 @@ function App() {
             </div>
             <video src="" className={styles.career_growth__video}>
               <source />
-            </video>{" "}
-            {/* ::after circle video play */}
+            </video>
+            <img
+              src="src/assets/svg/play-video.svg"
+              className={styles.career_growth__video_tool}
+            />
           </div>
         </section>
         <section className={styles.ribbon__section}>
@@ -270,97 +321,13 @@ function App() {
           <div className={styles.answers__content}>
             <h3 className={styles.answers__title}>Ответы на вопросы</h3>
             <div className={styles.answers__list}>
-              <div className={styles.answers__item}>
-                <div className={styles.answers__item_head}>
-                  <img
-                    src="src/assets/svg/answers-row.svg"
-                    className={styles.answers__row}
-                    alt=""
-                  />
-                  <h4 className={styles.answers__item_title}>
-                    На что нужно обратить внимание на собеседовании?
-                  </h4>
-                </div>
-                <div className={styles.answers__item_description}>
-                  <p className={styles.answers__item_text}>
-                    Кроме умения представлять себя, грамотно разговаривать и
-                    опрятного внешнего вида, стоит обратить внимание еще на пару
-                    моментов. Они не очевидны, но очень эффективны.
-                  </p>
-                  <ul className={styles.answers__item_ul}>
-                    <li className={styles.answers__item_li}>
-                      Сохраняйте спокойствие. Конечно, собеседование – это
-                      стрессовая ситуация, которая мешает конструктивно мыслить.
-                      Если волнение берет верх – выпейте немного воды, прижмите
-                      стопы к полу, а главное, помните: ничего ужасного
-                      произойти не может.
-                    </li>
-                    <li className={styles.answers__item_li}>
-                      Внимание к самопрезентации. Если собеседование – пьеса, вы
-                      – ее главный герой. Подготовьте рассказ о себе заранее,
-                      опираясь на важные навыки, и опишите, почему это важно для
-                      данной работы. Все это придаст вам уверенности в себе.
-                    </li>
-                    <li className={styles.answers__item_li}>
-                      Каверзные вопросы – это норма. Если вам задали какой-либо
-                      вопрос, который кажется вам сложным или задевает личные
-                      качества, знайте – правильных ответов не существует.
-                      Каверзные вопросы призваны показать вашу
-                      стрессоустойчивость и умение ориентироваться в ситуации.
-                      Здесь поможет адекватная самокритика и знания в своей
-                      профессии.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.answers__item}>
-                <div className={styles.answers__item_head}>
-                  <img
-                    src="src/assets/svg/answers-row.svg"
-                    className={styles.answers__row}
-                    alt=""
-                  />
-                  <h4
-                    className={styles.answers__item_title}
-                    style={{ color: "#666666" }}
-                  >
-                    Как правильно составить резюме?{" "}
-                  </h4>
-                </div>
-                <div className={styles.answers__item_description}>
-                  <p className={styles.answers__item_text}>
-                    Кроме умения представлять себя, грамотно разговаривать и
-                    опрятного внешнего вида, стоит обратить внимание еще на пару
-                    моментов. Они не очевидны, но очень эффективны.
-                  </p>
-                  <ul className={styles.answers__item_ul}>
-                    <li className={styles.answers__item_li}>
-                      <strong>Сохраняйте спокойствие. </strong>Конечно,
-                      собеседование – это стрессовая ситуация, которая мешает
-                      конструктивно мыслить. Если волнение берет верх – выпейте
-                      немного воды, прижмите стопы к полу, а главное, помните:
-                      ничего ужасного произойти не может.
-                    </li>
-                    <li className={styles.answers__item_li}>
-                      <strong> Внимание к самопрезентации. </strong>Если
-                      собеседование – пьеса, вы – ее главный герой. Подготовьте
-                      рассказ о себе заранее, опираясь на важные навыки, и
-                      опишите, почему это важно для данной работы. Все это
-                      придаст вам уверенности в себе.
-                    </li>
-                    <li className={styles.answers__item_li}>
-                      <strong> Каверзные вопросы – это норма.</strong> Если вам
-                      задали какой-либо вопрос, который кажется вам сложным или
-                      задевает личные качества, знайте – правильных ответов не
-                      существует. Каверзные вопросы призваны показать вашу
-                      стрессоустойчивость и умение ориентироваться в ситуации.
-                      Здесь поможет адекватная самокритика и знания в своей
-                      профессии.
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              {answers.map((answer) => (
+                <AnswerItem
+                  key={answer.id}
+                  title={answer.title}
+                  description={answer.description}
+                />
+              ))}
             </div>
           </div>
           <img

@@ -1,6 +1,10 @@
 import styles from "./header.module.css";
 
-const Header = ({ scroll }) => {
+interface IHeaderProps {
+  scroll: () => void;
+}
+
+const Header = ({ scroll }: IHeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}></div>

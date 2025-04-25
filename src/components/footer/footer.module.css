@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 100vw; */
   height: 65.625vw;
   background: url("../../assets/images/footer.png");
   background-size: cover;
@@ -17,6 +16,7 @@
   left: 0;
   width: 100vw;
   height: 65.625vw;
+  z-index: -1;
   background-color: rgba(0, 47, 61, 0.5);
 } */
 

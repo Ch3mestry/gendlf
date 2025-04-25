@@ -16,7 +16,7 @@
   padding-bottom: 9.140625vw; /* 117px */
 }
 
-.head__section_title {
+.head__title {
   font-weight: 700;
   font-size: 5vw; /* 64px */
   text-align: center;
@@ -25,7 +25,7 @@
   margin-bottom: 1.5625vw; /* 20px */
 }
 
-.head__section_text {
+.head__text {
   font-weight: 400;
   font-size: 1.953125vw; /* 25px */
   text-align: center;
@@ -34,13 +34,13 @@
   color: white;
 }
 
-.head__section_btns {
+.head__btns {
   display: flex;
   gap: 4.921875vw; /* 63px */
   align-items: center;
 }
 
-.head__section_btn_why {
+.head__btn_why {
   background-color: #9bcc37;
   width: 13.671875vw; /* 175px */
   height: 3.90625vw; /* 50px */
@@ -53,7 +53,7 @@
   font-size: 1.40625vw; /* 18px */
 }
 
-.head__section_btn_reg {
+.head__btn_reg {
   color: #9bcc37;
   border: #9bcc37 0.078125vw solid; /* 1px */
   font-weight: 700;
@@ -108,7 +108,7 @@
   margin-bottom: 1.5625vw; /* 20px */
 }
 
-.about__section_text_block {
+.about__text_block {
   display: flex;
   flex-direction: column;
   gap: 0.78125vw; /* 10px */
@@ -213,6 +213,7 @@
     rgba(39, 221, 209, 0.39) 57.4%,
     rgba(5, 176, 213, 0.32) 82.7%
   );
+  position: relative;
 }
 
 .career_growth__title {
@@ -250,6 +251,12 @@
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.career_growth__video_tool {
+  position: absolute;
+  right: 25.55vw;
+  top: 20vw;
 }
 
 /* ribbon section */
@@ -398,51 +405,4 @@
   flex-direction: column;
   gap: 2.34375vw; /* 30px */
   width: 66.40625vw; /* 850px */
-}
-
-.answers__item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625vw; /* 8px */
-}
-
-.answers__item_head {
-  display: flex;
-  gap: 1.171875vw; /* 15px */
-  align-items: center;
-}
-
-.answers__item_title {
-  font-weight: 400;
-  font-size: 1.40625vw; /* 18px */
-  text-decoration: underline;
-  color: #00b7ec;
-}
-
-.answers__item_description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.78125vw; /* 10px */
-  padding-left: 2.890625vw; /* 37px */
-}
-
-.answers__item_ul {
-  list-style-position: inside;
-  padding-left: 0.78125vw; /* 10px */
-}
-
-.answers__item_li {
-  color: #666666;
-  font-size: 1.40625vw; /* 18px */
-  font-weight: 400;
-}
-
-.answers__item_text {
-  font-weight: 400;
-  font-size: 1.40625vw; /* 18px */
-  color: #666666;
-}
-
-.answers__item strong {
-  font-weight: 700;
 }
