@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://{username}.github.io/{repository-name}",
+  "homepage": "http://ch3mestry.github.io/gendlf",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
